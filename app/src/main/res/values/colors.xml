@@ -5,8 +5,8 @@
     <color name="blueGrandStart">#235182</color>
     <color name="blueGrandEnd">#182E68</color>
     <color name="blueGrandCenter">#1E4277</color>
-    <color name="blueButton">#0196D8</color>
-    <color name="blueEdit">#356394</color>
+    <color name="blueButton">#016BD8</color>
+    <color name="blueEdit">#356394FA</color>
     <color name="whitetext">#D9EBFF</color>
     <color name="whitetexthint">#74D4FF</color>
 </resources>
