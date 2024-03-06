@@ -1,4 +1,4 @@
-package com.example.testpoject
+package com.example.testpoject.activites
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
@@ -42,5 +42,6 @@ class LoginActivity : AppCompatActivity() {
     override fun onResume() {
         super.onResume()
         Log.println(Log.INFO,"my_log","onResume")
+
     }
 }
