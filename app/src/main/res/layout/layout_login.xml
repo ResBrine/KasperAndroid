@@ -8,8 +8,6 @@
     tools:context=".activites.LoginActivity">
 
     <Button
-
-
         android:id="@+id/button"
         style="@style/button"
         android:layout_width="291dp"

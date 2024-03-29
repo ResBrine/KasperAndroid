@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activites.TestActivity">
+
+    <EditText
+        android:id="@+id/editTextIp"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:hint="IP:PORT"
+        android:layout_margin="10dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/btn_connect"
+        app:layout_constraintStart_toStartOf="parent"/>
+
+    <EditText
+        android:id="@+id/editTextUserName"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:layout_marginStart="8dp"
+        android:hint="Name"
+        app:layout_constraintEnd_toStartOf="@id/btn_connect"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/editTextIp" />
+    <ListView
+        android:id="@+id/listViewMessages"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintTop_toBottomOf="@id/editTextUserName"
+        app:layout_constraintBottom_toTopOf="@id/editTextSend"
+        app:layout_constraintStart_toStartOf="parent"/>
+
+    <EditText
+        android:id="@+id/editTextSend"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:hint="Message"
+        android:layout_marginBottom="10dp"
+        android:layout_marginStart="10dp"
+        app:layout_constraintHorizontal_weight="7"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/btn_send"/>
+    <ImageButton
+        android:id="@+id/btn_send"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintHorizontal_weight="1"
+        android:background="@drawable/ic_send"
+        android:layout_marginBottom="10dp"
+        android:layout_marginEnd="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@id/editTextSend"/>
+    <Button
+        android:id="@+id/btn_connect"
+        android:layout_width="100dp"
+        android:layout_height="0dp"
+        android:text="Connect"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="@id/editTextUserName"
+        app:layout_constraintEnd_toEndOf="parent"/>
+</androidx.constraintlayout.widget.ConstraintLayout>
