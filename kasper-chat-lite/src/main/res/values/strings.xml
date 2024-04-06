@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">Kasper Chat Lite</string>
+    <string name="login">Вход</string>
+    <string name="nameUser">Имя пользователя</string>
+    <string name="Password">Пароль</string>
+    <string name="toLogin">Войти</string>
+    <string name="registration">Регистрация</string>
+    <string name="toRegistration">Зарегистрироваться</string>
+    <string name="ip_port">IP:PORT</string>
+    <string name="AcceptPassword">Подвердите пароль</string>
+</resources>

@@ -1,0 +1,10 @@
+<resources>
+    <!-- Base application theme. -->
+    <style name="Base.Theme.TestProject" parent="Theme.Material3.DayNight.NoActionBar">
+        <!-- Customize your light theme here. -->
+        <item name="colorPrimary">#510559</item>
+
+    </style>
+
+    <style name="Theme.TestProject" parent="Base.Theme.TestProject" />
+</resources>

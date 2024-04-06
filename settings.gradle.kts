@@ -15,4 +15,5 @@ dependencyResolutionManagement {
 
 rootProject.name = "testPoject"
 include(":app")
- 
+include(":app:kasperchatlite")
+include(":kasper-chat-lite")

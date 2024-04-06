@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".login.LoginFragment"
+    android:orientation="vertical"
+    android:gravity="center">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="25sp"
+        android:textColor="?editTextColor"
+        android:layout_margin="5dp"
+        android:text="@string/login" />
+    <EditText android:id="@+id/edit_text_address"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:autofillHints="username"
+        android:gravity="center"
+        android:hint="@string/ip_port"
+        android:inputType="text"
+        android:layout_margin="5dp"
+        android:minWidth="48dp"
+        android:minHeight="48dp"
+        android:textColor="?editTextColor"
+        android:textColorHint="@color/gray" />
+    <EditText
+        android:id="@+id/editTextNameUser"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:autofillHints="username"
+        android:hint="@string/nameUser"
+        android:gravity="center"
+        android:inputType="textPersonName"
+        android:layout_margin="5dp"
+        android:minWidth="48dp"
+        android:minHeight="48dp"
+        android:textColor="?editTextColor"
+        android:textColorHint="@color/gray" />
+    <EditText
+        android:id="@+id/editTextPassword"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:autofillHints="username"
+        android:hint="@string/Password"
+        android:inputType="textPassword"
+        android:layout_margin="5dp"
+        android:minWidth="120dp"
+        android:gravity="center"
+        android:minHeight="48dp"
+        android:textColor="?editTextColor"
+        android:textColorHint="@color/gray" />
+    <Button android:id="@+id/confirm_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/toLogin"
+        android:textSize="20sp"
+        android:layout_margin="5dp"
+        android:paddingHorizontal="40dp"
+        android:paddingVertical="10dp"/>
+    <Button android:id="@+id/registration_Button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/registration"
+        android:textSize="17sp"
+        android:layout_margin="5dp"
+        android:backgroundTint="@color/transparent"
+        android:textColor="?editTextColor"
+        android:paddingHorizontal="40dp"
+        android:paddingVertical="10dp"/>
+</LinearLayout>
