@@ -18,7 +18,8 @@ jobs:
         uses: actions/setup-java@v1
         with:
           java-version: 17
-
+      - name: Download gradlew
+        run: chmod +x ./gradlew
       - name: Build Module app
         run: ./gradlew :app:assembleDebug 
           
