@@ -5,9 +5,8 @@ on:
     branches: '*'
   pull_request:
     branches: '*'
-
 jobs:
-  Build-APK:
+  Build-Module-App:
     runs-on: ubuntu-20.04
 
     steps:
@@ -18,18 +17,41 @@ jobs:
         uses: actions/setup-java@v1
         with:
           java-version: 17
-      - name: Download gradlew
+      - name: chmod +x ./gradlew
         run: chmod +x ./gradlew
       - name: Build Module app
         run: ./gradlew :app:assembleDebug 
+        
+      - name: Archive APK files
+        run: |
+          mkdir -p apk
+          cp app/build/outputs/apk/debug/app-debug.apk apk/
           
+      - name: Upload Build Artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: apks
+          path: apk/    
+  Build-Module-kasper-chat-lite:
+    runs-on: ubuntu-20.04
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v3
+
+      - name: Set up JDK 17
+        uses: actions/setup-java@v1
+        with:
+          java-version: 17
+      - name: chmod +x ./gradlew
+        run: chmod +x ./gradlew      
+        
       - name: Build Module kasper-chat-lite
         run: ./gradlew :kasper-chat-lite:assembleDebug 
         
       - name: Archive APK files
         run: |
           mkdir -p apk
-          cp app/build/outputs/apk/debug/app-debug.apk apk/
           cp kasper-chat-lite/build/outputs/apk/debug/kasper-chat-lite-debug.apk apk/
           
       - name: Upload Build Artifact
@@ -37,5 +59,4 @@ jobs:
         with:
           name: apks
           path: apk/
-
 
