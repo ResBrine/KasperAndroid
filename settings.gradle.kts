@@ -13,7 +13,6 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "testPoject"
+rootProject.name = "KasperChat"
 include(":app")
-include(":app:kasperchatlite")
 include(":kasper-chat-lite")

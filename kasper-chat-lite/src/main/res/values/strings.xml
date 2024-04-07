@@ -7,5 +7,5 @@
     <string name="registration">Регистрация</string>
     <string name="toRegistration">Зарегистрироваться</string>
     <string name="ip_port">IP:PORT</string>
-    <string name="AcceptPassword">Подвердите пароль</string>
+    <string name="AcceptPassword">Подведите пароль</string>
 </resources>
