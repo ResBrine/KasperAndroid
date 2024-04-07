@@ -19,13 +19,24 @@ jobs:
         with:
           java-version: 17
 
-      - name: Build
+      - name: Build Module app
         run: |
           chmod +x ./gradlew
           ./gradlew build
-
+          
+      - name: Build Module kasper-chat-lite
+        run: ./gradlew :kasper-chat-lite:assembleDebug 
+        
+      - name: Archive APK files
+        run: |
+          mkdir -p apk
+          cp moduleA/build/outputs/apk/debug/app-debug.apk apk/
+          cp moduleB/build/outputs/apk/debug/kasper-chat-lite-debug.apk apk/
+          
       - name: Upload Build Artifact
         uses: actions/upload-artifact@v3
         with:
-          name: app.apk
-          path: app/build/outputs/apk/debug/app-debug.apk
+          name: apks
+          path: apk/
+
+
