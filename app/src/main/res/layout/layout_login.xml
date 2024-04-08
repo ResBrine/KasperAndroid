@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/fon"
-    tools:context=".activites.LoginActivity">
+    tools:context="com.fedorkasper.testpoject.activites.LoginActivity">
 
     <Button
         android:id="@+id/button"

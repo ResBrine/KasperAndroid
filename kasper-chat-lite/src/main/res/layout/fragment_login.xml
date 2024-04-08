@@ -14,18 +14,6 @@
         android:textColor="?editTextColor"
         android:layout_margin="5dp"
         android:text="@string/login" />
-    <EditText android:id="@+id/edit_text_address"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:autofillHints="username"
-        android:gravity="center"
-        android:hint="@string/ip_port"
-        android:inputType="text"
-        android:layout_margin="5dp"
-        android:minWidth="48dp"
-        android:minHeight="48dp"
-        android:textColor="?editTextColor"
-        android:textColorHint="@color/gray" />
     <EditText
         android:id="@+id/editTextNameUser"
         android:layout_width="wrap_content"
