@@ -9,7 +9,7 @@ import androidx.fragment.app.activityViewModels
 import androidx.navigation.findNavController
 import com.fedorkasper.kasper_chat_lite.DataModel
 import com.fedorkasper.kasper_chat_lite.databinding.FragmentRegistrationBinding
-import com.fedorkasper.kasper_chat_lite.network.apiManager
+import com.fedorkasper.kasper_chat_lite.network.networkManager
 
 
 class RegistrationFragment : Fragment() {
@@ -31,7 +31,7 @@ class RegistrationFragment : Fragment() {
         binding.confirmButton.setOnClickListener {
             with(binding){
                 if (editTextPassword.text.toString() == editTextPassword2.text.toString())
-                    apiManager.API_REGISTRATION(editTextNameUser.text.toString(),editTextPassword.text.toString())
+                    networkManager.API_REGISTRATION(editTextNameUser.text.toString(),editTextPassword.text.toString())
             }
         }
     }

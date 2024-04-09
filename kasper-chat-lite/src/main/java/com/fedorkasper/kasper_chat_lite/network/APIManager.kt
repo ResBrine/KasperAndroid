@@ -4,10 +4,10 @@ import android.util.Log
 import java.net.InetSocketAddress
 import java.net.Socket
 import kotlin.concurrent.thread
-val apiManager = APIManager()
+val networkManager = APIManager()
 class APIManager {
 
-    private val socket = Socket()
+    val socket = Socket()
     fun connect(host: String,port: Int):String{
 
         val socketAddress = InetSocketAddress(host, port)
