@@ -5,6 +5,10 @@ import java.net.InetSocketAddress
 import java.net.Socket
 import kotlin.concurrent.thread
 val networkManager = APIManager()
+interface APIRequest{
+    fun newMessagePerson(apiString: String)
+    fun newMessageRoom(apiString: String)
+}
 class APIManager {
 
     val socket = Socket()
@@ -25,8 +29,8 @@ class APIManager {
             e.message.toString()
         }
     }
-    fun API_LOGIN(userName:String,password:String){
-       sendString(
+    fun send_API_LOGIN(userName:String, password:String){
+       send_String(
             "login\n" +
                     "{\n" +
                     "userName="+userName+"\n" +
@@ -34,8 +38,8 @@ class APIManager {
                     "}"
         )
     }
-    fun API_REGISTRATION(userName:String,password:String){
-        sendString(
+    fun send_API_REGISTRATION(userName:String, password:String){
+        send_String(
             "registration\n" +
                     "{\n" +
                     "userName="+userName+"\n" +
@@ -43,10 +47,9 @@ class APIManager {
                     "}"
         )
     }
-    fun sendString(text:String){
+    private fun send_String(text:String){
         thread {
             try {
-                Log.d("Socket", "Отправка сообщения:$text")
                 socket.outputStream.write(text.toByteArray())
             } catch (e: Exception) {
                 socket.close()
@@ -54,6 +57,12 @@ class APIManager {
 
             }
         }
+
+    }
+
+    fun recognize(apiString: String)
+    {
+        Log.d("Socket-Get", apiString)
 
     }
 }

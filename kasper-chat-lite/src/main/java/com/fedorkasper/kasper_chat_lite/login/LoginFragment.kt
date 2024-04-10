@@ -37,7 +37,7 @@ class LoginFragment : Fragment() {
         binding.confirmButton.setOnClickListener {
             with(binding){
 
-                    networkManager.API_LOGIN(editTextNameUser.text.toString(),editTextPassword.text.toString())
+                    networkManager.send_API_LOGIN(editTextNameUser.text.toString(),editTextPassword.text.toString())
 
             }
         }

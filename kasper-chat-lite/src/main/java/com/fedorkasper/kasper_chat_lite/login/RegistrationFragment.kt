@@ -31,7 +31,7 @@ class RegistrationFragment : Fragment() {
         binding.confirmButton.setOnClickListener {
             with(binding){
                 if (editTextPassword.text.toString() == editTextPassword2.text.toString())
-                    networkManager.API_REGISTRATION(editTextNameUser.text.toString(),editTextPassword.text.toString())
+                    networkManager.send_API_REGISTRATION(editTextNameUser.text.toString(),editTextPassword.text.toString())
             }
         }
     }

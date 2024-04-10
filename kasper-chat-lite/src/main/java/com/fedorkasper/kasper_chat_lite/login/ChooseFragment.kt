@@ -1,5 +1,6 @@
 package com.fedorkasper.kasper_chat_lite.login
 
+import android.app.Activity
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
@@ -33,7 +34,9 @@ class ChooseFragment : Fragment() {
                 val port = binding.editTextPort.text.toString().toInt()
                 val ip = binding.editTextIp.text.toString()
                 networkManager.connect(ip,port)
-            ContextCompat.startForegroundService(requireContext(), Intent(requireContext(),SocketService::class.java))
+
+           // ContextCompat.startForegroundService(requireContext(), Intent(requireContext(),SocketService::class.java))
+            requireContext().startService(Intent(requireContext(),SocketService::class.java))
             it.findNavController().navigate(R.id.action_chooseFragment_to_loginFragment)
 
         }
