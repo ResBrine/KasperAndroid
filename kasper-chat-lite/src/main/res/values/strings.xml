@@ -14,4 +14,6 @@
     <string name="ipAddress">IP адресс</string>
     <string name="port">Порт</string>
     <string name="toConnect">Соединиться</string>
+    <string name="Setting">Настройки</string>
+    <string name="todo">TODO</string>
 </resources>

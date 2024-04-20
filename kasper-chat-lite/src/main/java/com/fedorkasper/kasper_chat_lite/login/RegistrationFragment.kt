@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.findNavController
@@ -25,13 +26,19 @@ class RegistrationFragment : Fragment() {
     }
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding.loginButton.setOnClickListener{
-            it.findNavController().popBackStack()
-        }
-        binding.confirmButton.setOnClickListener {
-            with(binding){
-                if (editTextPassword.text.toString() == editTextPassword2.text.toString())
-                    networkManager.send_API_REGISTRATION(editTextNameUser.text.toString(),editTextPassword.text.toString())
+
+        with(binding){
+            loginButton.setOnClickListener{
+                it.findNavController().popBackStack()
+            }
+            confirmButton.setOnClickListener {
+                if(networkManager.socket.isConnected)
+                    if (editTextPassword.text.toString() == editTextPassword2.text.toString())
+                        networkManager.sendApiRegistration(editTextNameUser.text.toString(),editTextPassword.text.toString())
+                    else
+                        Toast.makeText(requireContext(), "Пароли не совпадают", Toast.LENGTH_SHORT).show()
+                else
+                    Toast.makeText(requireContext(), "Вы не подключены к серверу", Toast.LENGTH_SHORT).show()
             }
         }
     }

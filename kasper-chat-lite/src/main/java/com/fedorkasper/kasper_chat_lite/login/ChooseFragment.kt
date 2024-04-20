@@ -37,7 +37,7 @@ class ChooseFragment : Fragment() {
 
            // ContextCompat.startForegroundService(requireContext(), Intent(requireContext(),SocketService::class.java))
             requireContext().startService(Intent(requireContext(),SocketService::class.java))
-            it.findNavController().navigate(R.id.action_chooseFragment_to_loginFragment)
+                it.findNavController().navigate(R.id.action_chooseFragment_to_loginFragment)
 
         }
     }

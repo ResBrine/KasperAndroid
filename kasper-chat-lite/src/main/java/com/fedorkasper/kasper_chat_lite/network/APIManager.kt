@@ -1,16 +1,14 @@
 package com.fedorkasper.kasper_chat_lite.network
 
 import android.util.Log
+import com.fedorkasper.kasper_chat_lite.loginActivity
+import com.fedorkasper.kasper_chat_lite.social.ListChatsFragment
 import java.net.InetSocketAddress
 import java.net.Socket
 import kotlin.concurrent.thread
 val networkManager = APIManager()
-interface APIRequest{
-    fun newMessagePerson(apiString: String)
-    fun newMessageRoom(apiString: String)
-}
-class APIManager {
 
+class APIManager {
     val socket = Socket()
     fun connect(host: String,port: Int):String{
 
@@ -29,8 +27,8 @@ class APIManager {
             e.message.toString()
         }
     }
-    fun send_API_LOGIN(userName:String, password:String){
-       send_String(
+    fun sendApiLogin(userName:String, password:String){
+       sendString(
             "login\n" +
                     "{\n" +
                     "userName="+userName+"\n" +
@@ -38,8 +36,8 @@ class APIManager {
                     "}"
         )
     }
-    fun send_API_REGISTRATION(userName:String, password:String){
-        send_String(
+    fun sendApiRegistration(userName:String, password:String){
+        sendString(
             "registration\n" +
                     "{\n" +
                     "userName="+userName+"\n" +
@@ -47,13 +45,17 @@ class APIManager {
                     "}"
         )
     }
-    private fun send_String(text:String){
+    private fun sendString(text:String){
         thread {
             try {
-                socket.outputStream.write(text.toByteArray())
+                if (socket.isConnected)
+                    socket.outputStream.write(text.toByteArray())
+                else{
+                    Log.e("Socket", "Не подключен Socket")
+                }
             } catch (e: Exception) {
-                socket.close()
-                Log.d("Socket", "Exception " + e.message.toString())
+
+                Log.e("Socket", "Exception " + e.message.toString())
 
             }
         }
@@ -62,7 +64,11 @@ class APIManager {
 
     fun recognize(apiString: String)
     {
+        if (apiString.split("\n")[0] == "login")
+            loginActivity.nextActivity()
+        if (apiString.split("\n")[0] == "friends")
+            ListChatsFragment.newInstance(apiString,"pon")
         Log.d("Socket-Get", apiString)
-
     }
+
 }

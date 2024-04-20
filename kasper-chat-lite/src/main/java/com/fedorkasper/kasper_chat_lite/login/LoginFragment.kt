@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.findNavController
@@ -36,9 +37,10 @@ class LoginFragment : Fragment() {
 
         binding.confirmButton.setOnClickListener {
             with(binding){
-
-                    networkManager.send_API_LOGIN(editTextNameUser.text.toString(),editTextPassword.text.toString())
-
+                    if(networkManager.socket.isConnected)
+                        networkManager.sendApiLogin(editTextNameUser.text.toString(),editTextPassword.text.toString())
+                    else
+                        Toast.makeText(requireContext(), "Вы не подключены к серверу", Toast.LENGTH_SHORT).show()
             }
         }
     }
