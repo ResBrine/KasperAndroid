@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/fon"
+    android:background="@drawable/background_main"
     tools:context="com.fedorkasper.testpoject.activites.LoginActivity">
 
     <Button
@@ -32,107 +32,133 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
-    <TextView
-        android:id="@+id/textView5"
-        android:layout_width="145dp"
-        android:layout_height="25dp"
-        android:layout_marginBottom="8dp"
-        android:fontFamily="@font/didact_gothic_regular"
-        android:text="У вас нет аккаунта?"
-        android:textAlignment="center"
-        android:textColor="@color/whitetexthint"
-        android:textSize="16sp"
-        app:layout_constraintBottom_toTopOf="@+id/textViewRegistration"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.455"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <TextView
-        android:id="@+id/textViewRegistration"
+    <RelativeLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="92dp"
-        android:autoLink="all"
-        android:clickable="true"
-        android:fontFamily="@font/didact_gothic_regular"
-        android:text="З͟ а͟ р͟ е͟ г͟ и͟ с͟ т͟ р͟ и͟ р͟ у͟ й͟ т͟ е͟ с͟ ь͟"
-        android:textAlignment="center"
-        android:textColor="@color/whitetexthint"
-        android:textSize="16sp"
+        android:layout_marginTop="-80dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.46"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/button">
 
+        <TextView
+            android:id="@+id/textView5"
+            android:layout_width="145dp"
+            android:layout_height="25dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginStart="0dp"
+            android:layout_marginEnd="0dp"
+            android:layout_marginBottom="0dp"
+            android:fontFamily="@font/didact_gothic_regular"
+            android:text="У вас нет аккаунта?"
+            android:textAlignment="center"
+            android:textColor="@color/whitetexthint"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toTopOf="@+id/textViewRegistration"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <TextView
+            android:id="@+id/textViewRegistration"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/textView5"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginStart="0dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="0dp"
+            android:layout_marginBottom="0dp"
+            android:autoLink="all"
+            android:clickable="true"
+            android:fontFamily="@font/didact_gothic_regular"
+            android:text="З͟ а͟ р͟ е͟ г͟ и͟ с͟ т͟ р͟ и͟ р͟ у͟ й͟ т͟ е͟ с͟ ь͟"
+            android:textAlignment="center"
+            android:textColor="@color/whitetexthint"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent" />
+    </RelativeLayout>
     <EditText
         android:id="@+id/editTextTextPassword"
         style="@style/edit"
         android:layout_width="291dp"
         android:layout_height="65dp"
-        android:layout_marginBottom="114dp"
+        android:layout_marginBottom="32dp"
         android:ems="10"
         android:hint="Пароль"
         android:inputType="textPassword"
-        app:layout_constraintBottom_toTopOf="@+id/button"
+        app:layout_constraintBottom_toTopOf="@+id/gridLayout"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.512"
         app:layout_constraintStart_toStartOf="parent" />
 
     <ImageView
         android:id="@+id/imageView"
-        android:layout_width="254dp"
-        android:layout_height="229dp"
-        android:layout_marginTop="24dp"
+        android:layout_width="131dp"
+        android:layout_height="131dp"
+        android:layout_marginTop="84dp"
+        android:rotationX="0"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/ic_launcher_foreground" />
+        app:srcCompat="@drawable/ico" />
 
     <TextView
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="184dp"
         android:fontFamily="@font/didact_gothic_regular"
         android:text="Kasper Chat"
+        android:textAlignment="center"
         android:textColor="@color/whitetext"
         android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/imageView" />
+        app:layout_constraintTop_toBottomOf="@+id/imageView" />
 
-    <TextView
-        android:id="@+id/textViewForgorPassword"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:clickable="true"
-        android:fontFamily="@font/didact_gothic_regular"
-        android:text="Забыли пароль?"
-        android:textAlignment="center"
-        android:textColor="@color/whitetexthint"
-        android:textSize="16sp"
-        app:layout_constraintEnd_toEndOf="@+id/editTextTextPassword"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextPassword" />
-
-    <CheckBox
-        android:id="@+id/checkBox"
-        style="@style/style_cehck_box"
-        android:layout_width="237dp"
-        android:layout_height="38dp"
-        android:layout_marginBottom="16dp"
-        android:button="@drawable/checkbox_selector"
-        android:text="  Запомнить меня?"
+    <GridLayout
+        android:id="@+id/gridLayout"
+        android:layout_width="291dp"
+        android:layout_height="65dp"
+        android:layout_marginBottom="32dp"
         app:layout_constraintBottom_toTopOf="@+id/button"
-        app:layout_constraintStart_toStartOf="@+id/button" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
 
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintGuide_begin="20dp" />
+        <TextView
+            android:id="@+id/textViewForgorPassword"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_row="0"
+            android:layout_column="1"
+            android:layout_marginTop="0dp"
+            android:clickable="true"
+            android:fontFamily="@font/didact_gothic_regular"
+            android:text="Забыли пароль?"
+            android:textAlignment="center"
+            android:textColor="@color/whitetexthint"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="@+id/editTextTextPassword"
+            app:layout_constraintTop_toBottomOf="@+id/editTextTextPassword" />
+
+        <CheckBox
+            android:id="@+id/checkBox"
+            style="@style/style_cehck_box"
+            android:layout_width="175dp"
+            android:layout_height="38dp"
+            android:layout_row="1"
+            android:layout_column="0"
+            android:layout_marginBottom="0dp"
+            android:button="@drawable/checkbox_selector"
+            android:text="  Запомнить меня?"
+            app:layout_constraintBottom_toTopOf="@+id/button"
+            app:layout_constraintStart_toStartOf="@+id/button" />
+
+    </GridLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
