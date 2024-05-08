@@ -9,8 +9,8 @@ android {
 
     defaultConfig {
         applicationId = "com.fedorkasper.kasper_chat_lite"
-        minSdk = 28
-        targetSdk = 34
+        minSdk = 2300
+        targetSdk = 30
         versionCode = 1
         versionName = "1.0"
 
