@@ -1,4 +1,4 @@
-package com.fedorkasper.testpoject
+package com.fedorkasper.testpoject.message
 
 import java.util.Date
 

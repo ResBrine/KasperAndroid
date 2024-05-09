@@ -1,4 +1,4 @@
-package com.fedorkasper.testpoject
+package com.fedorkasper.testpoject.message
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -8,22 +8,20 @@ import java.util.Date
 
 interface MessageRepository {
     fun getAll(): LiveData<List<Message>>
+    fun setListMessage(listMessage:List<Message>)
     fun reading(id:Int)
     fun addMessage(author:String, text: String,dateTime:Date)
 }
-class MessageRepositoryInMemoryImpl:MessageRepository {
+class MessageRepositoryInMemoryImpl: MessageRepository {
     private var nextId = 0
-    private var messages:List<Message> = listOf(
-        Message(
-            id = 0,
-            author = "Kasper",
-            text = "Hello",
-            date = Calendar.getInstance().time,
-            hasRead = true
-        )
-    )
+    private var messages:List<Message> = listOf()
     private val data = MutableLiveData(messages)
     override fun getAll(): LiveData<List<Message>> = data
+    override fun setListMessage(listMessage: List<Message>) {
+        messages = listMessage
+        data.value = messages
+    }
+
     override fun reading(id: Int) {
         TODO("Not yet implemented")
     }
@@ -45,6 +43,7 @@ class MessageViewModal: ViewModel() {
 
     private val repository: MessageRepository = MessageRepositoryInMemoryImpl()
     val data = repository.getAll()
+    fun setListMessage(listMessage: List<Message>) = repository.setListMessage(listMessage)
     fun reading(id:Int) = repository.reading(id)
     fun addMessage(author: String,text: String,dateTime: Date) = repository.addMessage(author,text,dateTime)
 }

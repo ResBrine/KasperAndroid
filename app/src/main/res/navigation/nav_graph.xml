@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/authorization">
+
+    <navigation android:id="@+id/authorization"
+        app:startDestination="@id/loginFragment">
+        <fragment
+            android:id="@+id/loginFragment"
+            android:name="com.fedorkasper.testpoject.fragments.LoginFragment"
+            android:label="fragment_login"
+            tools:layout="@layout/fragment_login">
+            <action
+                android:id="@+id/action_loginFragment_to_registrationFragment"
+                app:destination="@id/registrationFragment" />
+        </fragment>
+        <fragment
+            android:id="@+id/registrationFragment"
+            android:name="com.fedorkasper.testpoject.fragments.RegistrationFragment"
+            android:label="fragment_registration"
+            tools:layout="@layout/fragment_registration"/>
+        <action
+            android:id="@+id/action_global_Social"
+            app:destination="@id/Social"
+            app:popUpTo="@id/authorization"
+            app:popUpToInclusive="true" />
+    </navigation>
+    <navigation android:id="@+id/Social"
+        app:startDestination="@id/listChatsFragment">
+        <fragment
+            android:id="@+id/listChatsFragment"
+            android:name="com.fedorkasper.testpoject.fragments.ListChatsFragment"
+            android:label="fragment_list_chats"
+            tools:layout="@layout/fragment_list_chats">
+            <action
+                android:id="@+id/action_listChatsFragment_to_chatFragment"
+                app:destination="@id/chatFragment" />
+        </fragment>
+        <fragment
+            android:id="@+id/chatFragment"
+            android:name="com.fedorkasper.testpoject.fragments.ChatFragment"
+            android:label="fragment_chat"
+            tools:layout="@layout/fragment_chat" />
+    </navigation>
+</navigation>
