@@ -7,8 +7,8 @@ import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.size
 import com.example.testpoject.databinding.ActivityTestBinding
-import com.fedorkasper.testpoject.MessageAdapter
-import com.fedorkasper.testpoject.MessageViewModal
+import com.fedorkasper.testpoject.message.MessageAdapter
+import com.fedorkasper.testpoject.message.MessageViewModal
 import com.fedorkasper.testpoject.userName
 import java.net.InetSocketAddress
 import java.net.Socket
@@ -21,7 +21,7 @@ class TestActivity : AppCompatActivity() {
     private var addressString : String = "192.168.179.188"
     private var port : Int = 8301
     private lateinit var socketAddress: InetSocketAddress
-    private val messageViewModal:MessageViewModal by viewModels()
+    private val messageViewModal: MessageViewModal by viewModels()
     @SuppressLint("SetTextI18n")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

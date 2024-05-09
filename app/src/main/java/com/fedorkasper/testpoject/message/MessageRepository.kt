@@ -1,4 +1,4 @@
-package com.fedorkasper.testpoject
+package com.fedorkasper.testpoject.message
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -11,7 +11,7 @@ interface MessageRepository {
     fun reading(id:Int)
     fun addMessage(author:String, text: String,dateTime:Date)
 }
-class MessageRepositoryInMemoryImpl:MessageRepository {
+class MessageRepositoryInMemoryImpl: MessageRepository {
     private var nextId = 0
     private var messages:List<Message> = listOf(
         Message(

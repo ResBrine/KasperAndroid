@@ -9,4 +9,5 @@
     <color name="blueEdit">#356394FA</color>
     <color name="whitetext">#D9EBFF</color>
     <color name="whitetexthint">#74D4FF</color>
+    <color name="transparent">#00D4FFAA</color>
 </resources>

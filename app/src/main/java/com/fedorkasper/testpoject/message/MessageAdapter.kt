@@ -1,4 +1,4 @@
-package com.fedorkasper.testpoject
+package com.fedorkasper.testpoject.message
 
 import android.view.LayoutInflater
 import android.view.View
@@ -7,6 +7,8 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.testpoject.databinding.MessageBinding
+import com.fedorkasper.testpoject.getHourMinute
+import com.fedorkasper.testpoject.userName
 
 class MessageDiffCallback : DiffUtil.ItemCallback<Message>(){
     override fun areItemsTheSame(oldItem: Message, newItem: Message): Boolean {
@@ -20,7 +22,7 @@ class MessageDiffCallback : DiffUtil.ItemCallback<Message>(){
 }
 class MessageViewHolder(private val binding: MessageBinding)
     : RecyclerView.ViewHolder(binding.root) {
-    fun bind(message: Message,listener: MessageAdapter.Listener) {
+    fun bind(message: Message, listener: MessageAdapter.Listener) {
         binding.apply {
             if (message.author == userName){
                 textViewMessageMy.text = message.text

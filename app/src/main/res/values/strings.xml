@@ -1,3 +1,20 @@
 <resources>
     <string name="app_name">Kasper Chat</string>
+
+    <string name="login">Вход</string>
+    <string name="nameUser">Имя пользователя</string>
+    <string name="Password">Пароль</string>
+    <string name="toLogin">Войти</string>
+    <string name="registration">Регистрация</string>
+    <string name="toRegistration">Зарегистрироваться</string>
+    <string name="ip_port">IP:PORT</string>
+    <string name="AcceptPassword">Подведите пароль</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="choosingServer">Выбор сервера</string>
+    <string name="ipAddress">IP адресс</string>
+    <string name="port">Порт</string>
+    <string name="toConnect">Соединиться</string>
+    <string name="Setting">Настройки</string>
+    <string name="todo">TODO</string>
 </resources>
