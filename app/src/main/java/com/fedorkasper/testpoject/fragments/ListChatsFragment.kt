@@ -42,7 +42,7 @@ class ListChatsFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         // Inflate the layout for this fragment
         binding = FragmentListChatsBinding.inflate(inflater, container, false)
         return binding.root
@@ -56,7 +56,7 @@ class ListChatsFragment : Fragment() {
             }
 
         })
-        binding.recyclerViewMessages.adapter = adapter
+        binding.recyclerViewItemChat.adapter = adapter
         binding.buttonAdd.setOnClickListener {
             itemChatViewModal.addItemChat("Каспер Федор")
         }

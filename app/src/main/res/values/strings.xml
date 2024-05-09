@@ -17,4 +17,5 @@
     <string name="toConnect">Соединиться</string>
     <string name="Setting">Настройки</string>
     <string name="todo">TODO</string>
+    <string name="send">Send</string>
 </resources>

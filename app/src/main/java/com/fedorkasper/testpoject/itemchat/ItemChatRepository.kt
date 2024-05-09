@@ -11,7 +11,6 @@ interface ItemChatRepository {
     fun getAll(): LiveData<List<ItemChat>>
     fun reading(id:Int)
     fun addItemChat(author:String)
-    fun changeLastMessage(id: Int, message: Message)
 }
 class ItemChatRepositoryInMemoryImpl: ItemChatRepository {
     private var nextId = 0
@@ -27,25 +26,13 @@ class ItemChatRepositoryInMemoryImpl: ItemChatRepository {
             ItemChat(
                 id = nextId++,
                 author = author,
-                text = "Пока нету сообщений",
-                date = Calendar.getInstance().time,
-                hasRead = false
+                hasRead = false,
+                listOf()
             )
         ) + itemChats
         data.value = itemChats
     }
 
-    override fun changeLastMessage(id: Int, message: Message) {
-        itemChats.map {
-            if (it.id==id)
-                it.apply {
-                    text = message.text
-                    author = message.author
-                }
-            it
-        }
-        data.value = itemChats
-    }
 }
 class ItemChatViewModal: ViewModel() {
 
@@ -53,5 +40,4 @@ class ItemChatViewModal: ViewModel() {
     val data = repository.getAll()
     fun reading(id:Int) = repository.reading(id)
     fun addItemChat(author: String) = repository.addItemChat(author)
-    fun changeLastMessage(id: Int,message:Message) = repository.changeLastMessage(id,message)
 }

@@ -9,7 +9,7 @@ import androidx.core.view.size
 import com.example.testpoject.databinding.ActivityTestBinding
 import com.fedorkasper.testpoject.message.MessageAdapter
 import com.fedorkasper.testpoject.message.MessageViewModal
-import com.fedorkasper.testpoject.userName
+import com.fedorkasper.testpoject.constants.userName
 import java.net.InetSocketAddress
 import java.net.Socket
 import java.util.Calendar
@@ -33,7 +33,7 @@ class TestActivity : AppCompatActivity() {
 
         })
         binding.editTextIp.setText("$addressString:$port")
-        binding.recyclerViewMessages.adapter = adapter // Передаю адаптер нашему RecyclerView,
+        binding.recyclerViewItemChat.adapter = adapter // Передаю адаптер нашему RecyclerView,
 
         messageViewModal.data.observe(this){  // observe - следит за изменениями
             // Если произошли изменения в postViewModel.data,
@@ -56,7 +56,7 @@ class TestActivity : AppCompatActivity() {
 
         binding.btnSend.setOnClickListener {
             messageViewModal.addMessage(userName,binding.editTextSend.text.toString(),Calendar.getInstance().time)
-            binding.recyclerViewMessages.scrollToPosition(binding.recyclerViewMessages.size)
+            binding.recyclerViewItemChat.scrollToPosition(binding.recyclerViewItemChat.size)
             thread {
                 socket!!.outputStream.write(binding.editTextSend.text.toString().toByteArray())
             }

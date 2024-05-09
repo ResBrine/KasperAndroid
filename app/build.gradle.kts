@@ -44,6 +44,7 @@ dependencies {
     //implementation("androidx.lifecycle:lifecycle-viewmodel-compose:*")
     implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:*")
     implementation("androidx.lifecycle:lifecycle-livedata-ktx:*")
+    implementation("com.google.code.gson:gson:2.8.6")
     implementation("androidx.fragment:fragment-ktx:1.6.2")
     implementation("androidx.core:core-ktx:1.12.0")
     implementation("androidx.appcompat:appcompat:1.6.1")
