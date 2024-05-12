@@ -42,6 +42,10 @@
             android:id="@+id/chatFragment"
             android:name="com.fedorkasper.testpoject.fragments.ChatFragment"
             android:label="fragment_chat"
-            tools:layout="@layout/fragment_chat" />
+            tools:layout="@layout/fragment_chat" >
+            <argument android:name="itemChat"
+                app:argType="com.fedorkasper.testpoject.itemchat.ItemChat" />
+
+        </fragment>
     </navigation>
 </navigation>

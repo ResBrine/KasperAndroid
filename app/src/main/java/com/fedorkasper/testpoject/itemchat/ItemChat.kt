@@ -1,12 +1,12 @@
 package com.fedorkasper.testpoject.itemchat
 
-import com.fedorkasper.testpoject.message.Message
-import com.fedorkasper.testpoject.message.MessageViewModal
-import java.util.Date
+import android.os.Parcelable
+import kotlinx.parcelize.Parcelize
 
+@Parcelize
 data class ItemChat(
     var id:Int,
     var author:String,
     var hasRead:Boolean,
-    var messages:List<Message>,
-)
+    var messages:List<Message>
+) : Parcelable

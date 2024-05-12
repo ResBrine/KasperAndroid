@@ -1,4 +1,4 @@
-package com.fedorkasper.testpoject.constants
+package com.fedorkasper.testpoject.tools
 
 import java.util.Date
 

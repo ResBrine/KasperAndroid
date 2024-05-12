@@ -9,8 +9,7 @@ import androidx.fragment.app.activityViewModels
 import com.example.testpoject.databinding.FragmentListChatsBinding
 import com.fedorkasper.testpoject.itemchat.ItemChatAdapter
 import com.fedorkasper.testpoject.itemchat.ItemChatViewModal
-import com.fedorkasper.testpoject.message.MessageViewModal
-import java.util.Calendar
+import com.fedorkasper.testpoject.tools.StorageManager
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -50,18 +49,24 @@ class ListChatsFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val adapter = ItemChatAdapter(object : ItemChatAdapter.Listener{
-            override fun reading() {
-               
+        val adapter = ItemChatAdapter()
+        val storageManager = StorageManager(requireContext())
+        itemChatViewModal.setAll(storageManager.loadChats())
+        with(binding) {
+            recyclerViewItemChat.adapter = adapter
+            buttonAdd.setOnClickListener {
+                edittextAuthor.text.apply {
+                    if (toString().isEmpty())
+                        itemChatViewModal.clearAll()
+                    else
+                        itemChatViewModal.addItemChat(toString())
+                    clear()
+                }
+                storageManager.saveChats(itemChatViewModal.data.value!!)
             }
-
-        })
-        binding.recyclerViewItemChat.adapter = adapter
-        binding.buttonAdd.setOnClickListener {
-            itemChatViewModal.addItemChat("Каспер Федор")
-        }
-        itemChatViewModal.data.observe(viewLifecycleOwner){
-            adapter.submitList(it)
+            itemChatViewModal.data.observe(viewLifecycleOwner) {
+                adapter.submitList(it)
+            }
         }
     }
 

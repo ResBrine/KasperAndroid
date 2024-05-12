@@ -15,6 +15,19 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintBottom_toTopOf="@id/button_add"
         tools:listitem="@layout/item_chat"/>
+    <EditText android:id="@+id/edittext_author"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:padding="5dp"
+        android:textSize="24sp"
+        android:layout_marginBottom="50dp"
+        android:hint="Введите имя"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/button_add"
+        android:inputType="textPersonName"
+        tools:ignore="Autofill,HardcodedText" />
+
     <Button
         android:id="@+id/button_add"
         android:layout_width="wrap_content"
@@ -23,6 +36,6 @@
         android:layout_marginBottom="50dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"/>
+        tools:ignore="HardcodedText" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,4 +1,4 @@
-package com.fedorkasper.testpoject.message
+package com.fedorkasper.testpoject.itemchat
 
 import android.view.LayoutInflater
 import android.view.View
@@ -7,8 +7,8 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.testpoject.databinding.MessageBinding
-import com.fedorkasper.testpoject.constants.getHourMinute
-import com.fedorkasper.testpoject.constants.userName
+import com.fedorkasper.testpoject.tools.getHourMinute
+import com.fedorkasper.testpoject.tools.userName
 
 class MessageDiffCallback : DiffUtil.ItemCallback<Message>(){
     override fun areItemsTheSame(oldItem: Message, newItem: Message): Boolean {
@@ -22,7 +22,7 @@ class MessageDiffCallback : DiffUtil.ItemCallback<Message>(){
 }
 class MessageViewHolder(private val binding: MessageBinding)
     : RecyclerView.ViewHolder(binding.root) {
-    fun bind(message: Message, listener: MessageAdapter.Listener) {
+    fun bind(message: Message) {
         binding.apply {
             if (message.author == userName){
                 textViewMessageMy.text = message.text
@@ -40,18 +40,13 @@ class MessageViewHolder(private val binding: MessageBinding)
     }
 }
 
-class MessageAdapter(
-    private val listener: Listener
-): ListAdapter<Message, MessageViewHolder>(MessageDiffCallback()) {
+class MessageAdapter: ListAdapter<Message, MessageViewHolder>(MessageDiffCallback()) {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MessageViewHolder {
         val binding = MessageBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return MessageViewHolder(binding)
     }
     override fun onBindViewHolder(holder: MessageViewHolder, position:Int){
         val message = getItem(position)
-        holder.bind(message, listener)
-    }
-    interface Listener{
-        fun reading()
+        holder.bind(message)
     }
 }
