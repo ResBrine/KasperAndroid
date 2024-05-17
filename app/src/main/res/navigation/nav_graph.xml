@@ -23,11 +23,12 @@
             tools:layout="@layout/fragment_registration"/>
         <action
             android:id="@+id/action_global_Social"
-            app:destination="@id/Social"
+            app:destination="@id/social"
             app:popUpTo="@id/authorization"
             app:popUpToInclusive="true" />
     </navigation>
-    <navigation android:id="@+id/Social"
+
+    <navigation android:id="@+id/social"
         app:startDestination="@id/listChatsFragment">
         <fragment
             android:id="@+id/listChatsFragment"

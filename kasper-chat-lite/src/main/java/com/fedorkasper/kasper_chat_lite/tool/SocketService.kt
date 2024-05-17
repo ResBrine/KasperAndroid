@@ -1,4 +1,4 @@
-package com.fedorkasper.kasper_chat_lite.service
+package com.fedorkasper.kasper_chat_lite.tool
 
 import android.app.Service
 import android.content.Intent
@@ -6,10 +6,10 @@ import android.os.Handler
 import android.os.IBinder
 import android.os.Looper
 import android.util.Log
-import com.fedorkasper.kasper_chat_lite.network.networkManager
+import com.fedorkasper.kasper_chat_lite.activites.MainActivity
 import java.io.IOException
-import java.io.InputStream
 import java.util.concurrent.Executors
+
 
 class SocketService : Service() {
     private var isRunning = false
@@ -23,7 +23,9 @@ class SocketService : Service() {
             isRunning = true
             Thread {
                 try {
-                    val inputStream = networkManager.socket.getInputStream()
+
+                    val activity = MainActivity.instance
+                    val inputStream = activity.networkManager.socket.getInputStream()
                     val executors = Executors.newSingleThreadExecutor()
                     val handler = Handler(Looper.getMainLooper())
 
@@ -42,7 +44,7 @@ class SocketService : Service() {
                                         handler.post {
                                             kotlin.run {
                                                 val message = String(buffer, 0, finalByte).replace(0.toChar().toString(),"",false)
-                                                networkManager.recognize(message)
+                                                activity.networkManager.recognize(message)
                                             }
                                         }
 

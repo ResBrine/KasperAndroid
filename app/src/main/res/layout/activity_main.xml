@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.fedorkasper.testpoject.activites.MainActivity">
+
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/loginFragmentContainerView"
         android:layout_width="match_parent"

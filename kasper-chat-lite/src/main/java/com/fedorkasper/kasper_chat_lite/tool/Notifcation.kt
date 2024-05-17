@@ -1,4 +1,4 @@
-package com.fedorkasper.kasper_chat_lite
+package com.fedorkasper.kasper_chat_lite.tool
 
 import android.annotation.SuppressLint
 import android.app.NotificationChannel

@@ -26,7 +26,6 @@ class ChatFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        Log.d("DDD","onCreateView")
 
         binding = FragmentChatBinding.inflate(inflater,container,false)
         return binding.root
@@ -64,8 +63,8 @@ class ChatFragment : Fragment() {
         }
     }
     companion object {
-        fun setIdChat(id: ItemChat) :Bundle{
-            return  bundleOf(ARG_ITEM_CHAT to id)
+        fun setIdChat(itemChat: ItemChat) :Bundle{
+            return  bundleOf(ARG_ITEM_CHAT to itemChat)
         }
     }
 }

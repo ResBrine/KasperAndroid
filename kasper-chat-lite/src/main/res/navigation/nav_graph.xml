@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/navigation_loogin">
+
+    <navigation android:id="@+id/navigation_loogin"
+        app:startDestination="@id/chooseFragment">
+        <fragment
+            android:id="@+id/registrationFragment"
+            android:name="com.fedorkasper.kasper_chat_lite.fragment.login.RegistrationFragment"
+            android:label="fragment_registration"
+            tools:layout="@layout/fragment_registration">
+            <action
+                android:id="@+id/action_registrationFragment_to_loginFragment"
+                app:destination="@id/loginFragment" />
+            <action
+                android:id="@+id/action_registrationFragment_to_chooseFragment"
+                app:destination="@id/chooseFragment" />
+        </fragment>
+        <fragment
+            android:id="@+id/chooseFragment"
+            android:name="com.fedorkasper.kasper_chat_lite.fragment.login.ChooseFragment"
+            android:label="fragment_choose"
+            tools:layout="@layout/fragment_choose">
+            <action
+                android:id="@+id/action_chooseFragment_to_loginFragment"
+                app:destination="@id/loginFragment" />
+        </fragment>
+        <fragment
+            android:id="@+id/loginFragment"
+            android:name="com.fedorkasper.kasper_chat_lite.fragment.login.LoginFragment"
+            android:label="fragment_login"
+            tools:layout="@layout/fragment_login">
+            <action
+                android:id="@+id/action_loginFragment_to_registrationFragment"
+                app:destination="@id/registrationFragment" />
+            <action
+                android:id="@+id/action_loginFragment_to_chooseFragment"
+                app:destination="@id/chooseFragment" />
+        </fragment>
+        <action
+            android:id="@+id/action_global_navigation_social"
+            app:destination="@id/navigation_social"
+            app:popUpTo="@id/navigation_loogin"
+            app:popUpToInclusive="true" />
+    </navigation>
+    <navigation android:id="@+id/navigation_social"
+        app:startDestination="@id/listChatsFragment">
+        <fragment
+            android:id="@+id/listChatsFragment"
+            android:name="com.fedorkasper.kasper_chat_lite.fragment.social.ListChatsFragment"
+            android:label="fragment_list_chats"
+            tools:layout="@layout/fragment_list_chats" >
+            <argument
+                android:name="mineId"
+                app:argType="integer"
+                android:defaultValue="0" />
+        </fragment>
+        <argument
+            android:name="mineId"
+            app:argType="integer"
+            android:defaultValue="0" />
+    </navigation>
+</navigation>

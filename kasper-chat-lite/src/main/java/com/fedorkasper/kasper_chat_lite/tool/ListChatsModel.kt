@@ -1,4 +1,4 @@
-package com.fedorkasper.kasper_chat_lite.social.tools
+package com.fedorkasper.kasper_chat_lite.tool
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -9,7 +9,7 @@ private interface ItemChatRepository{
     fun addItemChat(itemChat: ItemChat)
     fun clearList()
 }
-private class ItemChatRepositoryInMemoryImpl:ItemChatRepository{
+private class ItemChatRepositoryInMemoryImpl: ItemChatRepository {
     private var itemChats = listOf<ItemChat>()
     private val data = MutableLiveData(itemChats)
     override fun getAll(): LiveData<List<ItemChat>> = data
