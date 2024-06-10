@@ -10,4 +10,9 @@
     <color name="whitetext">#D9EBFF</color>
     <color name="whitetexthint">#74D4FF</color>
     <color name="transparent">#00D4FFAA</color>
+    <color name="graytext">#8495a9</color>
+    <color name="editbluechat">#2c5e8f</color>
+    <color name="backgrandchat">#142e4d</color>
+    <color name="messegeTUDA">#6C3131</color>
+    <color name="messegeSUDA">#353B4A</color>
 </resources>

@@ -13,16 +13,21 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         android:contentDescription="@string/todo" />
-    <TextView android:id="@+id/text_name"
+
+    <TextView
+        android:id="@+id/text_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Федор Каспер"
         android:fontFamily="@font/didact_gothic_regular"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toEndOf="@id/image_avatar"/>
+        android:text="Федор Каспер"
+        android:textColor="@color/whitetext"
+        android:textStyle="bold"
+        app:layout_constraintStart_toEndOf="@id/image_avatar"
+        app:layout_constraintTop_toTopOf="parent" />
     <TextView android:id="@+id/text_lastMessage"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:textColor="@color/graytext"
         android:text="Привет как дела?"
         android:fontFamily="@font/didact_gothic_regular"
         android:layout_marginStart="10dp"
@@ -34,6 +39,7 @@
         android:id="@+id/text_date"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:textColor="@color/graytext"
         android:layout_marginTop="4dp"
         android:layout_marginEnd="16dp"
         android:text="18:30"
