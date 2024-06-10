@@ -1,4 +1,4 @@
-package com.fedorkasper.kasper_chat_lite.tool
+package com.fedorkasper.testpoject.tools
 
 import android.util.Log
 import com.google.gson.Gson
@@ -28,17 +28,12 @@ class APIManager(private val listenerAPI: ListenerAPI) {
         }
     }
     fun sendApiLogin(userName:String, password:String){
-       sendString(createLoginData(false, userName, password))
+        sendString(createLoginData(false, userName, password))
     }
-    fun sendApiRegistration(userName:String, password:String){
-        sendString(
-            "registration\n" +
-                    "{\n" +
-                    "userName="+userName+"\n" +
-                    "password="+password+"\n" +
-                    "}"
-        )
+    fun sendMessage(message: Message) {
+        sendString(createMessage(message))
     }
+
     private fun sendString(text:String){
         thread {
             try {
@@ -58,29 +53,30 @@ class APIManager(private val listenerAPI: ListenerAPI) {
 
     fun recognize(apiString: String)
     {
-//        if (apiString.split("\n")[0] == "login")
-//            listenerAPI.login(apiString)
-//        if (apiString.split("\n")[0] == "registration")
-//            listenerAPI.registration(apiString)
-//        if (apiString.split("\n")[0] == "message")
-//            listenerAPI.message(apiString)
-//        if (apiString.split("\n")[0] == "friends")
-//            ListChatsFragment.newInstance(apiString,"pon")
-        Log.d("Socket-Get", apiString)
+            if (iUser == null)
+                try {
+                    iUser = getFullData(apiString)
+                    listenerAPI.getlogindata(iUser!!)
+                }catch (e:Exception)
+                {
+                    Log.e("APIManager", e.message.toString())
+                }
+            else
+                listenerAPI.message(getMessage(apiString))
+            Log.d("Socket-Get", apiString)
     }
 
-    interface ListenerAPI{
-        fun login(data:String)
-        fun registration(data:String)
-        fun message(data:String)
 
+    interface ListenerAPI{
+        fun getlogindata(data:FullDataClient)
+        fun message(data:Message)
     }
     data class Message(
         var idChat: Long,
         var idUser: Long,
         var nameUser: String,
         var message: String,
-        var date: LocalDateTime
+        var date: String
     )
 
     data class AuthenticationDataClient(
@@ -92,10 +88,10 @@ class APIManager(private val listenerAPI: ListenerAPI) {
 
     data class FullDataClient(
         val fullDataClient:Boolean = true,
+        var id: Long,
         var userName: String,
         var password: String,
-        var friends: String,
-        var rooms: String
+        var rooms: List<Long>
     )
 
     data class SimpleAnswer(
@@ -112,7 +108,7 @@ class APIManager(private val listenerAPI: ListenerAPI) {
             return Gson().toJson(message)
         }
 
-        fun createMessage(idChat: Long, idUser: Long, nameUser: String, message: String, date: LocalDateTime): String {
+        fun createMessage(idChat: Long, idUser: Long, nameUser: String, message: String, date: String): String {
             return Gson().toJson(Message(idChat = idChat, idUser = idUser, nameUser = nameUser, message = message, date = date))
         }
 

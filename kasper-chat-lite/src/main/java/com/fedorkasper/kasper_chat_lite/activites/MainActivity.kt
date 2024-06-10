@@ -17,7 +17,6 @@ class MainActivity : AppCompatActivity(),APIManager.ListenerAPI {
         instance = this
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
     }
 
     fun nextActivity() {
@@ -37,6 +36,5 @@ class MainActivity : AppCompatActivity(),APIManager.ListenerAPI {
     }
     companion object{
         lateinit var instance: MainActivity
-        
     }
 }

@@ -5,7 +5,7 @@ import kotlinx.parcelize.Parcelize
 
 @Parcelize
 data class ItemChat(
-    var id:Int,
+    var id:Long,
     var author:String,
     var hasRead:Boolean,
     var messages:List<Message>

@@ -1,4 +1,4 @@
-package com.fedorkasper.kasper_chat_lite.tool
+package com.fedorkasper.testpoject.tools
 
 import android.app.Service
 import android.content.Intent
@@ -6,7 +6,7 @@ import android.os.Handler
 import android.os.IBinder
 import android.os.Looper
 import android.util.Log
-import com.fedorkasper.kasper_chat_lite.activites.MainActivity
+import com.fedorkasper.testpoject.activites.MainActivity
 import java.io.IOException
 import java.io.InputStream
 import java.util.concurrent.Executors
@@ -16,10 +16,14 @@ class SocketService : Service() {
     private var isRunning = false
 
     override fun onBind(intent: Intent?): IBinder? {
+        Log.d("Socket", "onBind" )
+
         return null
     }
 
     override fun onStartCommand(intent: Intent?, flags: Int, startId: Int): Int {
+        Log.d("Socket", "onStartCommand" )
+
         if (!isRunning) {
             isRunning = true
             Thread {

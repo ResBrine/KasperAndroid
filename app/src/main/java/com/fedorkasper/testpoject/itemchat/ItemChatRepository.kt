@@ -5,6 +5,7 @@ import android.content.Context
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import com.fedorkasper.testpoject.tools.APIManager
 import com.fedorkasper.testpoject.tools.StorageManager
 import java.util.Calendar
 
@@ -13,17 +14,19 @@ interface ItemChatRepository {
     fun setAll(chats:List<ItemChat>)
     fun reading(id:Int)
     fun addItemChat(author:String)
-    fun addMessage(itemChat: ItemChat, text: String)
+    fun addMessage(itemChat: APIManager.Message)
     fun clear()
 }
 class ItemChatRepositoryInMemoryImpl(context: Context): ItemChatRepository {
-    private var nextId = 1
+    private var nextId = 1L
     private var itemChats:List<ItemChat> = listOf()
     private val data = MutableLiveData(itemChats)
     private val storageManager = StorageManager(context)
     private fun sync() {
         data.value = itemChats
-        storageManager.saveChats(itemChats)
+        itemChats.forEach{
+            storageManager.saveMessages(it.id, it.messages)
+        }
     }
     override fun getAll(): LiveData<List<ItemChat>> = data
     override fun setAll(chats: List<ItemChat>) {
@@ -47,14 +50,14 @@ class ItemChatRepositoryInMemoryImpl(context: Context): ItemChatRepository {
         ) + itemChats
         sync()
     }
-    override fun addMessage(itemChat: ItemChat, text: String) {
+    override fun addMessage(itemChat: APIManager.Message) {
         itemChats.forEach{
-            if (it.id == itemChat.id)
+            if (it.id == itemChat.idChat.toLong())
                 it.messages += listOf(
                     Message(
                         it.messages.size+1,
-                        itemChat.author,
-                        text,
+                        itemChat.nameUser,
+                        itemChat.message,
                         Calendar.getInstance().time,
                         false
                     )
@@ -64,7 +67,7 @@ class ItemChatRepositoryInMemoryImpl(context: Context): ItemChatRepository {
     }
 
     override fun clear() {
-        storageManager.deleteAll()
+        storageManager. deleteAll()
         itemChats = emptyList()
         sync()
     }
@@ -77,5 +80,5 @@ class ItemChatViewModal(application: Application): AndroidViewModel(application)
     fun setAll(chats:List<ItemChat>) = repository.setAll(chats)
     fun clearAll() = repository.clear()
     fun addItemChat(author: String) = repository.addItemChat(author)
-    fun addMessage(itemChat: ItemChat,text: String) = repository.addMessage(itemChat,text)
+    fun addMessage(itemChat: APIManager.Message) = repository.addMessage(itemChat)
 }

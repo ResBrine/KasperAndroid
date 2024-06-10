@@ -1,5 +1,6 @@
 package com.fedorkasper.testpoject.fragments
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -9,9 +10,15 @@ import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import com.example.testpoject.databinding.FragmentChatBinding
+import com.fedorkasper.testpoject.activites.MainActivity
 import com.fedorkasper.testpoject.itemchat.ItemChat
 import com.fedorkasper.testpoject.itemchat.ItemChatViewModal
 import com.fedorkasper.testpoject.itemchat.MessageAdapter
+import com.fedorkasper.testpoject.tools.APIManager
+import com.fedorkasper.testpoject.tools.iUser
+import java.time.LocalDateTime
+import java.util.Calendar
+import java.util.Date
 
 private const val ARG_ITEM_CHAT = "itemChat"
 
@@ -31,6 +38,7 @@ class ChatFragment : Fragment() {
         return binding.root
     }
 
+    @SuppressLint("NewApi")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         Log.d("DDD","onViewCreated")
@@ -50,16 +58,22 @@ class ChatFragment : Fragment() {
                 message = toString()
                 clear()
             }
-            itemChatViewModal.addMessage(
-                itemChat = itemChat.copy().let{
-                    if (message.first() == '@'){
-                        it.author = "Я"
-                        message = message.drop(1)
-                    }
-                    it
-                },
-                text = message
-            )
+
+            /*itemChatViewModal.addMessage(
+                APIManager.Message(
+                    idChat = itemChat.id,
+                    idUser = iUser!!.id,
+                    message = message,
+                    nameUser = iUser!!.userName,
+                    date = Calendar.getInstance().time.toString()
+                )
+            )*/
+            iUser?.let {
+                MainActivity.instance.networkManager.sendMessage(APIManager.Message(itemChat.id, it.id, it.userName, message, LocalDateTime.now().toString()))
+            }
+
+
+
         }
     }
     companion object {

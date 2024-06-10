@@ -7,9 +7,11 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import com.example.testpoject.databinding.FragmentListChatsBinding
+import com.fedorkasper.testpoject.itemchat.ItemChat
 import com.fedorkasper.testpoject.itemchat.ItemChatAdapter
 import com.fedorkasper.testpoject.itemchat.ItemChatViewModal
 import com.fedorkasper.testpoject.tools.StorageManager
+import com.fedorkasper.testpoject.tools.iUser
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -42,7 +44,6 @@ class ListChatsFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        // Inflate the layout for this fragment
         binding = FragmentListChatsBinding.inflate(inflater, container, false)
         return binding.root
     }
@@ -51,7 +52,11 @@ class ListChatsFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         val adapter = ItemChatAdapter()
         val storageManager = StorageManager(requireContext())
-        itemChatViewModal.setAll(storageManager.loadChats())
+        var chats = emptyList<ItemChat>()
+        iUser?.rooms?.forEach {
+            chats = chats.plus(ItemChat(it, it.toString(), false, storageManager.loadMessages(it)) )
+        }
+        itemChatViewModal.setAll(chats)
         with(binding) {
             recyclerViewItemChat.adapter = adapter
             buttonAdd.setOnClickListener {
@@ -62,7 +67,7 @@ class ListChatsFragment : Fragment() {
                         itemChatViewModal.addItemChat(toString())
                     clear()
                 }
-                storageManager.saveChats(itemChatViewModal.data.value!!)
+                    //storageManager.saveChats(itemChatViewModal.data.value!!)
             }
             itemChatViewModal.data.observe(viewLifecycleOwner) {
                 adapter.submitList(it)
