@@ -54,7 +54,7 @@ class ListChatsFragment : Fragment() {
         val storageManager = StorageManager(requireContext())
         var chats = emptyList<ItemChat>()
         iUser?.rooms?.forEach {
-            chats = chats.plus(ItemChat(it, it.toString(), false, storageManager.loadMessages(it)) )
+            chats = chats.plus(ItemChat(it.idChat, it.nameRoom, false, storageManager.loadMessages(it.idChat)) )
         }
         itemChatViewModal.setAll(chats)
         with(binding) {

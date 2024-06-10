@@ -9,8 +9,6 @@ class StorageManager(context: Context) {
     private val editor = preferences.edit()
     private val countChat:Int
         get() = preferences.getInt("countChat", -1)
-    private val countMessage:Int
-        get() = preferences.getInt("countMessage", -1)
 
     fun saveMessages(idRoom:Long, messages: List<Message>){
         var lenght = 0
@@ -18,11 +16,11 @@ class StorageManager(context: Context) {
             val json = Gson().toJson(it)
             editor.putString("${idRoom}Message${lenght++}", json)
         }
-        editor.putInt("countMessage", lenght)
+        editor.putInt("countMessage${idRoom}", lenght)
         editor.apply()
     }
     fun loadMessages(idRoom:Long):List<Message>{
-        val length = countMessage
+        val length = preferences.getInt("countMessage${idRoom}", -1)
         var messages = listOf<Message>()
         try {
 
@@ -38,7 +36,7 @@ class StorageManager(context: Context) {
         }catch (e:Exception)
         {
             e.printStackTrace()
-            deleteAll()
+          //  deleteAll()
         }
 
         return messages

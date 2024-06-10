@@ -78,6 +78,10 @@ class APIManager(private val listenerAPI: ListenerAPI) {
         var message: String,
         var date: String
     )
+    data class Room(
+        var idChat: Long,
+        var nameRoom: String,
+    )
 
     data class AuthenticationDataClient(
         val authenticationDataClient:Boolean = true,
@@ -91,7 +95,7 @@ class APIManager(private val listenerAPI: ListenerAPI) {
         var id: Long,
         var userName: String,
         var password: String,
-        var rooms: List<Long>
+        var rooms: List<Room>
     )
 
     data class SimpleAnswer(
