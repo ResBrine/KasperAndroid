@@ -1,6 +1,6 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:background="@drawable/background_main"
+    android:background="@color/backgrandchat"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -20,14 +20,19 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"/>
     </androidx.constraintlayout.widget.ConstraintLayout>
-    <androidx.recyclerview.widget.RecyclerView android:id="@+id/recyclerViewMessage"
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerViewMessage"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        tools:listitem="@layout/message"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-        app:layout_constraintTop_toBottomOf="@id/panel_top"
         app:layout_constraintBottom_toTopOf="@id/panel_bootom"
-        app:layout_constraintStart_toStartOf="parent"/>
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/panel_top"
+        tools:listitem="@layout/message" />
     <androidx.constraintlayout.widget.ConstraintLayout android:id="@+id/panel_bootom"
         android:layout_width="match_parent"
         android:layout_height="45dp"
@@ -37,8 +42,8 @@
 
         <EditText
             android:id="@+id/edittext_message"
-            style="@style/edit"
-            android:textColor="#979797"
+            style="@style/edit_2"
+            android:textColor="#335073"
             android:textSize="15dp"
             android:hint="Cообщение..."
             android:layout_width="0dp"
@@ -50,7 +55,7 @@
             android:id="@+id/button_send"
             android:layout_width="50dp"
             android:layout_height="50dp"
-            android:background="@drawable/tuda"
+            android:background="@drawable/send"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>

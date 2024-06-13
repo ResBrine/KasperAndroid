@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/background_main"
+    android:background="@color/backgrandchat"
     tools:context="com.fedorkasper.testpoject.fragments.LoginFragment">
 
     <Button
@@ -114,7 +114,7 @@
         android:id="@+id/imageView"
         android:layout_width="131dp"
         android:layout_height="131dp"
-        android:layout_marginTop="84dp"
+        android:layout_marginTop="8dp"
         android:rotationX="0"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
